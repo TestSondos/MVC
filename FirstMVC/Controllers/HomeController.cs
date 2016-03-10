@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,9 +16,11 @@ namespace FirstMVC.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Description page of PHR";
+            var model = new AboutModel();
+            model.Name = "Sondos";
+            model.Location = "Al Haram";
 
-            return View();
+            return View(model);
         }
 
         public ActionResult Contact()

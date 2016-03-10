@@ -1,8 +1,11 @@
-﻿@{
+﻿@model FirstMVC.Models.AboutModel 
+@{
     ViewBag.Title = "About";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
+<h4>@Model.Name</h4>
+<h4>Location: @Model.Location</h4>
 
 <p>PHR stands for Personal Health Record.</p>
 <p>You can make a profile which contains all your health record</p>

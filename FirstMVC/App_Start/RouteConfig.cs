@@ -13,6 +13,14 @@ namespace FirstMVC
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("sondos", "sondos/{name}",
+                new { controller = "sondos", action = "Search", name = UrlParameter.Optional }
+                );
+
+            routes.MapRoute("sondossamii", "sondossamii/{name}",
+                new { controller = "sondossamii", action ="Search2", name = UrlParameter.Optional}
+                );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
