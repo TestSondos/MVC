@@ -16,6 +16,7 @@ namespace FirstMVC.Controllers
         public ActionResult Index()
         {
             var dataStore = new DataStore();
+            dataStore.AddMedicalRecord(Helper.Instance.UserId, DateTime.UtcNow.ToString());
             ViewBag.UserData = dataStore.GetMedicalHistory(Helper.Instance.UserId).ToJson();
             return View();
         }
