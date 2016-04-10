@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using AzureStorage;
 using FirstMVC.Helpers;
+using _360Courier.Extensions;
+using System.Security.Claims;
 
 namespace FirstMVC.Controllers
 {
@@ -22,9 +24,10 @@ namespace FirstMVC.Controllers
             };
             AzureStore A = new AzureStore();
             A.AddPatient(patientA);
-            
 
-            return View(patientA);
+            ViewBag.UserData = AzureStore.PatientEntity(Helper.Instance.UserId).ToJson();
+
+            return View();
         }
 
         // GET: Patient/Details/5

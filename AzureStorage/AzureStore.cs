@@ -24,6 +24,11 @@ namespace AzureStorage
             TableOperation insertNew = TableOperation.Insert(entity);
             table.Execute(insertNew);
         }
+
+        public static object PatientEntity(string p)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class PatientEntity : TableEntity
