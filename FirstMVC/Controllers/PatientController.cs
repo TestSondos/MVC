@@ -25,7 +25,7 @@ namespace FirstMVC.Controllers
             AzureStore A = new AzureStore();
             A.AddPatient(patientA);
 
-            ViewBag.UserData = AzureStore.PatientEntity(Helper.Instance.UserId).ToJson();
+            //ViewBag.UserData = AzureStore.PatientEntity(Helper.Instance.UserId).ToJson();
 
             return View();
         }
