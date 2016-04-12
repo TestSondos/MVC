@@ -11,12 +11,12 @@ namespace FirstMVC.Controllers
     {
         // GET: SondosSamii
         //[Authorize]
-        [Log]
-        public ActionResult Search2(string name ="My name is Sondos Sami")
-        {
-            var message = Server.HtmlEncode(name);
-            throw new Exception("Something terrible has happened");
-            return Content(message);
-        }
+        //[Log]
+        //public ActionResult Search2(string name ="My name is Sondos Sami")
+        //{
+        //    var message = Server.HtmlEncode(name);
+        //    throw new Exception("Something terrible has happened");
+        //    return Content(message);
+        //}
     }
 }

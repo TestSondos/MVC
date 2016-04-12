@@ -18,16 +18,16 @@ namespace FirstMVC.Controllers
             PatientEntity patientA = new PatientEntity(Helper.Instance.UserId, DateTime.UtcNow.ToString())
             {
                 FirstName = "Sondos",
-                LastName = "Sami",
-                Email = "sss@aaa.com",
-                Mobile = 0111111
+                LastName = "Samii",
+                Email = "sss@aa.com",
+                Mobile = 012221111
             };
             AzureStore A = new AzureStore();
             A.AddPatient(patientA);
             
             //ViewBag.UserData = AzureStore.PatientEntity(Helper.Instance.UserId).ToJson();
-            ViewBag.UserData = AzureStore.PatientEntity(Helper.Instance.UserId).ToJson();
-            return View(patientA);
+            ViewData.ToJson();
+            return Json(patientA, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Patient/Details/5

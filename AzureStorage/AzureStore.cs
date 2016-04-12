@@ -14,9 +14,10 @@ namespace AzureStorage
         public CloudTable table;
         public AzureStore()
         {
-            CloudStorageAccount myStorage = CloudStorageAccount.DevelopmentStorageAccount;
+            CloudStorageAccount myStorage = CloudStorageAccount.Parse(
+                "DefaultEndpointsProtocol=https;AccountName=phrdevelop;AccountKey=OYFfULV+hclTWMC37yjIuubqHXTbLU3J5nLE3qaDf/qS72h/M7Hz/n2XKHc1TnufMPjp8yDJSeobJCWPsttVMA==;BlobEndpoint=https://phrdevelop.blob.core.windows.net/;TableEndpoint=https://phrdevelop.table.core.windows.net/;QueueEndpoint=https://phrdevelop.queue.core.windows.net/;FileEndpoint=https://phrdevelop.file.core.windows.net/");
             CloudTableClient myTable = myStorage.CreateCloudTableClient();
-            table = myTable.GetTableReference("AllPatients");
+            table = myTable.GetTableReference("patient");
             table.CreateIfNotExists();
         }
         public void AddPatient (PatientEntity entity)
