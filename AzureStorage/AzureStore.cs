@@ -11,12 +11,12 @@ namespace AzureStorage
 {
     public class AzureStore
     {
-        private CloudTable table;
+        public CloudTable table;
         public AzureStore()
         {
             CloudStorageAccount myStorage = CloudStorageAccount.DevelopmentStorageAccount;
             CloudTableClient myTable = myStorage.CreateCloudTableClient();
-            table = myTable.GetTableReference("patients");
+            table = myTable.GetTableReference("AllPatients");
             table.CreateIfNotExists();
         }
         public void AddPatient (PatientEntity entity)

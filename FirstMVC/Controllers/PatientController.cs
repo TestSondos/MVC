@@ -24,10 +24,10 @@ namespace FirstMVC.Controllers
             };
             AzureStore A = new AzureStore();
             A.AddPatient(patientA);
-
+            
             //ViewBag.UserData = AzureStore.PatientEntity(Helper.Instance.UserId).ToJson();
-
-            return View();
+            ViewBag.UserData = AzureStore.PatientEntity(Helper.Instance.UserId).ToJson();
+            return View(patientA);
         }
 
         // GET: Patient/Details/5

@@ -21,6 +21,10 @@ namespace FirstMVC
                 new { controller = "sondossamii", action ="Search2", name = UrlParameter.Optional}
                 );
 
+            routes.MapRoute("patient", "patient/{name}",
+                new { controller = "patient", action = "Index", name = UrlParameter.Optional }
+                );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
