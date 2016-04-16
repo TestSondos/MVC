@@ -12,6 +12,7 @@ namespace AzureStorage
     public class AzureStore
     {
         public CloudTable table;
+        public CloudTable medrec;
         public AzureStore()
         {
             CloudStorageAccount myStorage = CloudStorageAccount.Parse(
@@ -19,17 +20,34 @@ namespace AzureStorage
             CloudTableClient myTable = myStorage.CreateCloudTableClient();
             table = myTable.GetTableReference("patient");
             table.CreateIfNotExists();
+            medrec = myTable.GetTableReference("records");
+            medrec.CreateIfNotExists();
         }
         public void AddPatient (PatientEntity entity)
         {
             TableOperation insertNew = TableOperation.Insert(entity);
             table.Execute(insertNew);
         }
+        public void AddRecord (RecordEntity record)
+        {
+            //TableBatchOperation batchOperation = new TableBatchOperation();
+            //batchOperation.Insert(recordA);
+            //batchOperation.Insert(recordB);
+            TableOperation insertRecord = TableOperation.Insert(record);
+            medrec.Execute(insertRecord);
+        }
 
         public static object PatientEntity(string p)
         {
             throw new NotImplementedException();
         }
+
+        //public static object RecordEntity(string r)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public ITableEntity recordA { get; set; }
     }
 
     public class PatientEntity : TableEntity
@@ -48,5 +66,16 @@ namespace AzureStorage
         public string LastName { get; set; }
         public int Mobile { get; set; }
         public string Email { get; set; }
+    }
+
+    public class RecordEntity : TableEntity
+    {
+        public RecordEntity (string id, string date)
+        {
+            this.PartitionKey = id;
+            this.RowKey = date;
+        }
+        public string title { get; set; }
+        public string description { get; set; }
     }
 }
