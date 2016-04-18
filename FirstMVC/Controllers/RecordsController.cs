@@ -15,22 +15,22 @@ namespace FirstMVC.Controllers
         {
             RecordEntity recordA = new RecordEntity (Helper.Instance.UserId, DateTime.UtcNow.ToString())
             {
-                title = "Blood Pressure",
-                description = "Your Blood Pressure was 110/70 at 3:10 \nThe normal is 120/80"
+                Title = "Blood Pressure",
+                Description = "Your Blood Pressure was 110/70 at 3:10 \nThe normal is 120/80"
             };
-            //RecordEntity recordB = new RecordEntity(Helper.Instance.UserId, DateTime.UtcNow.ToString())
-            //{
-            //    title = "Weight",
-            //    description = "Your weight is 65KG and you're great now"
-            //};
+            RecordEntity recordB = new RecordEntity(Helper.Instance.UserId, DateTime.UtcNow.ToString())
+            {
+                Title = "Weight",
+                Description = "Your weight is 65KG and you're great now"
+            };
 
             AzureStore A = new AzureStore();
             A.AddRecord(recordA);
+            A.AddRecord(recordB);
 
-            ViewData.ToString();
-
-            //A.AddRecord(recordB);
-            Console.WriteLine("Your Records are here :)");
+            ViewBag.T1 = recordA.Title;
+            ViewBag.T2 = recordB.Title;
+            
             return View();
         }
 

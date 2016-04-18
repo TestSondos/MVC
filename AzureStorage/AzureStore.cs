@@ -30,11 +30,14 @@ namespace AzureStorage
         }
         public void AddRecord (RecordEntity record)
         {
-            //TableBatchOperation batchOperation = new TableBatchOperation();
-            //batchOperation.Insert(recordA);
-            //batchOperation.Insert(recordB);
-            TableOperation insertRecord = TableOperation.Insert(record);
-            medrec.Execute(insertRecord);
+            if (record.PartitionKey == null)
+            {
+                TableBatchOperation batchOperation = new TableBatchOperation();
+                batchOperation.Insert(record);
+                medrec.ExecuteBatch(batchOperation);
+            }
+            //TableOperation insertRecord = TableOperation.Insert(record);
+            //medrec.Execute(insertRecord);
         }
 
         public static object PatientEntity(string p)
@@ -42,12 +45,9 @@ namespace AzureStorage
             throw new NotImplementedException();
         }
 
-        //public static object RecordEntity(string r)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         public ITableEntity recordA { get; set; }
+
+        public ITableEntity recordB { get; set; }
     }
 
     public class PatientEntity : TableEntity
@@ -66,6 +66,8 @@ namespace AzureStorage
         public string LastName { get; set; }
         public int Mobile { get; set; }
         public string Email { get; set; }
+
+        
     }
 
     public class RecordEntity : TableEntity
@@ -75,7 +77,7 @@ namespace AzureStorage
             this.PartitionKey = id;
             this.RowKey = date;
         }
-        public string title { get; set; }
-        public string description { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
     }
 }

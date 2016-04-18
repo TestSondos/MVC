@@ -12,28 +12,51 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.title)
+            @Html.DisplayNameFor(model => model.Title)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>*@
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
+        <th>
+            @ViewBag.T1
+        </th>
+        <th>
+            @Html.ActionLink("Add Blood Pressure", "AddBP")
+        </th>
+        @*<th>
+            @ViewBag.Description
+        </th>*@
     </tr>
-}
+    <tr>
+        <th>
+            @ViewBag.T2
+        </th>
+        <th>
+            @Html.ActionLink("Add Weight", "AddW")
+        </th>
+    </tr>
+
+@*@if (Model != null)
+{
+    foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+}*@
+
 
 </table>
