@@ -30,7 +30,9 @@ namespace FirstMVC.Controllers
 
             ViewBag.T1 = recordA.Title;
             ViewBag.T2 = recordB.Title;
-            
+            ViewBag.D1 = recordA.Description;
+            ViewBag.D2 = recordB.Description;
+
             return View();
         }
 

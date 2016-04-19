@@ -283,6 +283,7 @@
     <Content Include="Views\MedRec\Index.cshtml" />
     <Content Include="Views\Patient\Index.cshtml" />
     <Content Include="Views\Records\Index.cshtml" />
+    <Content Include="Views\Records\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
