@@ -6,17 +6,35 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>AzureStore</h4>
+<dl>
+    <dt class="h3"> @ViewBag.T1 </dt>
+    <dd> @ViewBag.D1 </dd>
+    <dt class="h3"> @ViewBag.T2 </dt>
+    <dd> @ViewBag.D2 </dd>
+    <dt class="h3"> @ViewBag.T3 </dt>
+    <dd> @ViewBag.D3 </dd>
+    <dd> <img src="http://www.bournemouthprivateclinic.co.uk/media/2200/x-ray.jpg" alt="SondosXRays" class="img-responsive img-rounded"> </dd>
+
+</dl>
+
+@*<div class="col-md-12 ">
+    <h4> <strong> @ViewBag.T1  </strong></h4>
+    @ViewBag.D1
+</div>
+<div class="col-md-12">
+    <h4> <strong> @ViewBag.T2 </strong></h4>
+    @ViewBag.D2
+</div>*@
+
+@*<div>
+    <h4>@ViewBag.T1</h4>
     <hr />
     <dl class="dl-horizontal">
     </dl>
-</div>
+</div>*@
 
-@ViewBag.T1
-@ViewBag.D1
 
-@*<p>
+<p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
-</p>*@
+</p>

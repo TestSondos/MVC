@@ -10,35 +10,49 @@ namespace FirstMVC.Controllers
 {
     public class RecordsController : Controller
     {
-        // GET: Records
-        public ActionResult Index()
+        public RecordsController ()
         {
-            RecordEntity recordA = new RecordEntity (Helper.Instance.UserId, DateTime.UtcNow.ToString())
+            RecordEntity recordA = new RecordEntity(Helper.Instance.UserId, DateTime.UtcNow.ToString())
             {
                 Title = "Blood Pressure",
-                Description = "Your Blood Pressure was 110/70 at 3:10 \nThe normal is 120/80"
+                Description = "Your Blood Pressure was 110/70 at 3:10 The normal is 120/80"
             };
             RecordEntity recordB = new RecordEntity(Helper.Instance.UserId, DateTime.UtcNow.ToString())
             {
                 Title = "Weight",
                 Description = "Your weight is 65KG and you're great now"
             };
+            RecordEntity recordC = new RecordEntity(Helper.Instance.UserId, DateTime.UtcNow.ToString())
+            {
+                Title = "XRays",
+                Description = "Your XRays are here wherever you are :)"
+            };
 
             AzureStore A = new AzureStore();
             A.AddRecord(recordA);
             A.AddRecord(recordB);
+            A.AddRecord(recordC);
 
             ViewBag.T1 = recordA.Title;
             ViewBag.T2 = recordB.Title;
+            ViewBag.T3 = recordC.Title;
+
             ViewBag.D1 = recordA.Description;
             ViewBag.D2 = recordB.Description;
+            ViewBag.D3 = recordC.Description;
 
+
+        }
+        // GET: Records
+        public ActionResult Index()
+        {
             return View();
         }
 
         // GET: Records/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
+            id = Helper.Instance.UserId;
             return View();
         }
 
