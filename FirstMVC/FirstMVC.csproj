@@ -191,8 +191,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MedRecController.cs" />
-    <Compile Include="Controllers\PatientController.cs" />
-    <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Controllers\RecordsController.cs" />
     <Compile Include="Controllers\SondosController.cs" />
     <Compile Include="Controllers\SondosSamiiController.cs" />
@@ -203,8 +201,10 @@
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Models\AboutModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\NewBPModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NewSLModel.cs" />
     <Compile Include="Models\Patients.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -282,8 +282,11 @@
     <Content Include="Views\Patients\Index.cshtml" />
     <Content Include="Views\MedRec\Index.cshtml" />
     <Content Include="Views\Patient\Index.cshtml" />
+    <Content Include="Views\RecordsOld\Index.cshtml" />
+    <Content Include="Views\RecordsOld\Details.cshtml" />
+    <Content Include="Views\Records\AddBP.cshtml" />
     <Content Include="Views\Records\Index.cshtml" />
-    <Content Include="Views\Records\Details.cshtml" />
+    <Content Include="Views\Records\AddSL.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -298,6 +301,10 @@
     <ProjectReference Include="..\AzureStorage\AzureStorage.csproj">
       <Project>{fde68974-b16e-41db-94c1-765d452ae45a}</Project>
       <Name>AzureStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Contracts\Contracts.csproj">
+      <Project>{ec235883-a746-41e3-9980-710fec298292}</Project>
+      <Name>Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

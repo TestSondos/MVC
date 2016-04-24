@@ -1,59 +1,69 @@
-﻿using System;
+﻿using AzureStorage;
+using Contracts;
+using FirstMVC.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using FirstMVC.Helpers;
-using AzureStorage;
+using _360Courier;
+using _360Courier.Extensions;
+using FirstMVC.Models;
 
 namespace FirstMVC.Controllers
 {
     public class RecordsController : Controller
     {
-        public RecordsController ()
-        {
-            RecordEntity recordA = new RecordEntity(Helper.Instance.UserId, DateTime.UtcNow.ToString())
-            {
-                Title = "Blood Pressure",
-                Description = "Your Blood Pressure was 110/70 at 3:10 The normal is 120/80"
-            };
-            RecordEntity recordB = new RecordEntity(Helper.Instance.UserId, DateTime.UtcNow.ToString())
-            {
-                Title = "Weight",
-                Description = "Your weight is 65KG and you're great now"
-            };
-            RecordEntity recordC = new RecordEntity(Helper.Instance.UserId, DateTime.UtcNow.ToString())
-            {
-                Title = "XRays",
-                Description = "Your XRays are here wherever you are :)"
-            };
+        public IRecordsManager recordsManager = new AzureStore();
+        public IMedicalRecord record = new RecordEntity(Helper.Instance.UserId);
 
-            AzureStore A = new AzureStore();
-            A.AddRecord(recordA);
-            A.AddRecord(recordB);
-            A.AddRecord(recordC);
-
-            ViewBag.T1 = recordA.Title;
-            ViewBag.T2 = recordB.Title;
-            ViewBag.T3 = recordC.Title;
-
-            ViewBag.D1 = recordA.Description;
-            ViewBag.D2 = recordB.Description;
-            ViewBag.D3 = recordC.Description;
-
-
-        }
         // GET: Records
         public ActionResult Index()
         {
-            return View();
+            //var records = recordsManager.ReadAll(Helper.Instance.UserId);
+            //return View(records ?? Enumerable.Empty<IMedicalRecord>());
+
+            var records = recordsManager.ReadBP(Helper.Instance.UserId);
+            return View(records ?? Enumerable.Empty<IMedicalRecord>());
+
+            //Can't make this :(
+            //var records = recordsManager.Read(Helper.Instance.UserId);
+            //return View(records);
         }
 
         // GET: Records/Details/5
         public ActionResult Details(string id)
         {
-            id = Helper.Instance.UserId;
             return View();
+        }
+
+        public ActionResult AddBP()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddBP(NewBPModel model)
+        {
+            record.Title = "Blood Pressure";
+            record.Description = string.Format("Your Blood Pressure in {0} is {1}/{2}", DateTime.UtcNow.ToString(), model.S, model.D);
+
+            recordsManager.Add(record);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult AddSL()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddSL (NewSLModel model)
+        {
+            record.Title = "Sugar Level";
+            record.Description = string.Format("Your Sugar Level in {0} is {1} mg/dl", DateTime.UtcNow, model.mg);
+            recordsManager.Add(record);
+            return RedirectToAction("Index");
         }
 
         // GET: Records/Create
@@ -121,5 +131,7 @@ namespace FirstMVC.Controllers
                 return View();
             }
         }
+
+        public string recordId { get; set; }
     }
 }
