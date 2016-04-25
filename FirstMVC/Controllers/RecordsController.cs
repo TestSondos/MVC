@@ -9,7 +9,6 @@ using System.Web.Mvc;
 using _360Courier;
 using _360Courier.Extensions;
 using FirstMVC.Models;
-using AzureStorage;
 
 namespace FirstMVC.Controllers
 {
@@ -21,28 +20,14 @@ namespace FirstMVC.Controllers
         // GET: Records
         public ActionResult Index()
         {
-            //var records = recordsManager.ReadAll(Helper.Instance.UserId);
-            //return View(records ?? Enumerable.Empty<IMedicalRecord>());
-
-            var records = recordsManager.ReadBP(Helper.Instance.UserId);
+            var records = recordsManager.ReadAll(Helper.Instance.UserId);
             return View(records ?? Enumerable.Empty<IMedicalRecord>());
-
-            //Can't make this :(
-            //var records = recordsManager.Read(Helper.Instance.UserId);
-            //return View(records);
         }
 
         // GET: Records/Details/5
         public ActionResult Details(string id)
         {
-            //return Content(record.Title, record.Description);
-            
-            //var rec = recordsManager.ReadBP(Helper.Instance.UserId);
-            //return View(rec);
             return View();
-            //return Json(new { Record = rec, Name = "Bla Bla" }, JsonRequestBehavior.AllowGet);
-
-            //return View(rec ?? Enumerable.Empty<IMedicalRecord>());
         }
 
         public ActionResult AddBP()

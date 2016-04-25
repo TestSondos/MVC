@@ -12,9 +12,9 @@ namespace Contracts
 
         void Update(IMedicalRecord updatedRecord);
 
-        IMedicalRecord Read(string userId);
+        //IMedicalRecord Read(string userId);
 
-        IEnumerable<IMedicalRecord> ReadBP(string userId);
+        //IEnumerable<IMedicalRecord> ReadBP(string userId);
 
         IEnumerable<IMedicalRecord> ReadAll(string userId);
 

@@ -43,37 +43,6 @@ namespace AzureStorage
             recordsTable.Execute(operation);
         }
 
-        public IMedicalRecord Read(string userId)
-        {
-            TableOperation operation = TableOperation.Retrieve<RecordEntity>("Blood Pressure", DateTime.UtcNow.ToString());
-            TableResult retrievedResult = recordsTable.Execute(operation);
-
-            if (retrievedResult.Result != null)
-                return retrievedResult.Result as IMedicalRecord;
-            else
-                return null;
-
-        }
-
-        public IEnumerable<IMedicalRecord> ReadBP (string userId)
-        {
-            TableQuery<RecordEntity> rangeQuery = new TableQuery<RecordEntity>().Where(
-                TableQuery.CombineFilters(
-                TableQuery.GenerateFilterCondition("Title", QueryComparisons.Equal, "Blood Pressure"),
-                TableOperators.Or,
-                TableQuery.GenerateFilterCondition("Title", QueryComparisons.Equal, "Sugar Level")));
-
-                //TableOperators.And,
-                //TableQuery.GenerateFilterCondition("Timestamp", QueryComparisons.LessThan, DateTime.UtcNow.AddHours(-DateTime.UtcNow.Hour).ToString())));
-
-            //TableQuery<RecordEntity> rangeQuery = new TableQuery<RecordEntity>().Where(
-            //    TableQuery.GenerateFilterCondition("Title", QueryComparisons.Equal, "Blood Pressure"));
-
-            var queryResult = recordsTable.ExecuteQuery<RecordEntity>(rangeQuery);
-
-            return queryResult.Select<RecordEntity, IMedicalRecord>(record => record as IMedicalRecord);
-        }
-
         public IEnumerable<IMedicalRecord> ReadAll(string userId)
         {
             var query = new TableQuery<RecordEntity>().
