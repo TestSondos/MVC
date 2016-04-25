@@ -206,6 +206,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NewSLModel.cs" />
     <Compile Include="Models\Patients.cs" />
+    <Compile Include="Models\Records.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -287,6 +288,7 @@
     <Content Include="Views\Records\AddBP.cshtml" />
     <Content Include="Views\Records\Index.cshtml" />
     <Content Include="Views\Records\AddSL.cshtml" />
+    <Content Include="Views\Records\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
