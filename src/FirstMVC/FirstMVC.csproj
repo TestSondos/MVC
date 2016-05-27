@@ -289,6 +289,7 @@
     <Content Include="Views\Records\Index.cshtml" />
     <Content Include="Views\Records\AddSL.cshtml" />
     <Content Include="Views\Records\Details.cshtml" />
+    <Content Include="Error.htm" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
