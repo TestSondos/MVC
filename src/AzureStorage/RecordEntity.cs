@@ -10,14 +10,20 @@ namespace AzureStorage
 {
     public class RecordEntity : TableEntity, IMedicalRecord
     {
-        public RecordEntity(string userId, string recordId=null)
+        public RecordEntity(string userId, string recordId)
         {
             this.PartitionKey = userId;
-            this.RowKey = recordId ?? Guid.NewGuid().ToString("D");
+            this.RowKey = GetType().Name;
+        }
+
+        public RecordEntity(string userId)
+        {
+
         }
 
         public RecordEntity() 
         {
+            
         }
 
         public string Type { get; set; }
@@ -38,4 +44,5 @@ namespace AzureStorage
             set { RowKey = value; }
         }
     }
+
 }

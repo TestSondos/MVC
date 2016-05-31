@@ -45,13 +45,17 @@ namespace AzureStorage
 
         public IEnumerable<IMedicalRecord> ReadAll(string userId)
         {
-            var query = new TableQuery<RecordEntity>().
-                Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, userId));
+            TableQuery<RecordEntity> query = new TableQuery<RecordEntity>
+                ().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, userId));
+            return query;
+        //    var query = new TableQuery<RecordEntity>().
+        //        Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, userId));
 
-            var queryResult = recordsTable.ExecuteQuery<RecordEntity>(query);
+        //    var queryResult = recordsTable.ExecuteQuery<RecordEntity>(query);
 
-            return queryResult.Select<RecordEntity, IMedicalRecord>(record => record as IMedicalRecord);
+        //    return queryResult.Select<RecordEntity, IMedicalRecord>(record => record as IMedicalRecord);
         }
+
 
         public IEnumerable<IMedicalRecord> ReadAll(string userId, int pageNumber)
         {
