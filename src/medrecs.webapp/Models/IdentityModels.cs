@@ -21,7 +21,7 @@ namespace medrecs.webapp.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("UsersDBConnection", throwIfV1Schema: false)
         {
         }
 
