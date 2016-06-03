@@ -8,7 +8,14 @@ namespace medrecs.webapp.Controllers
 {
     public class HomeController : Controller
     {
+        [Route("")]
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        [Route("team")]
+        public ActionResult Team()
         {
             return View();
         }
