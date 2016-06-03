@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "medrecs.webapp", "medrecs.w
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "medrecs.webapp.Tests", "medrecs.webapp.Tests\medrecs.webapp.Tests.csproj", "{9280165C-A666-4729-A985-3E129105730B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "medrecs.data", "medrecs.data\medrecs.data.csproj", "{0F100578-0854-42F3-BF27-31F32438E786}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A1507EAE-AD7C-4E9F-A3CB-332153A7F49D}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
@@ -28,6 +30,10 @@ Global
 		{9280165C-A666-4729-A985-3E129105730B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9280165C-A666-4729-A985-3E129105730B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9280165C-A666-4729-A985-3E129105730B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F100578-0854-42F3-BF27-31F32438E786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F100578-0854-42F3-BF27-31F32438E786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F100578-0854-42F3-BF27-31F32438E786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F100578-0854-42F3-BF27-31F32438E786}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
