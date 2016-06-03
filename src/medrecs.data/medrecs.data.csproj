@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BloodPressure.cs" />
+    <Compile Include="Core\MedrecsConfigurationManager.cs" />
     <Compile Include="Core\RecordEntity.cs" />
     <Compile Include="Core\RecordsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

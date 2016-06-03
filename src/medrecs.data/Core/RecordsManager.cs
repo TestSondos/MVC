@@ -8,21 +8,9 @@ namespace medrecs.data.Core
 {
     public class RecordsManager
     {
-        #region Cloud Table
-        readonly Lazy<CloudTable> _recordsTable = new Lazy<CloudTable>(() =>
-        {
-            var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
-            var tableClient = storageAccount.CreateCloudTableClient();
-            var table = tableClient.GetTableReference("medrecs");
-            table.CreateIfNotExists();
-            return table;
-        });
-
-        CloudTable Table { get { return _recordsTable.Value; } }
-        #endregion
+        static CloudTable Table { get { return MedrecsConfigurationManager.RecordsTable; } }
 
         #region Insert
-        
 
         public void Insert<T>(string userId, T entity) where T : RecordEntity
         {
