@@ -26,26 +26,26 @@ namespace medrecs.webapp.Tests.Controllers
         }
 
         [TestMethod]
-        public void About()
+        public void Team()
         {
             // Arrange
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.About() as ViewResult;
+            ViewResult result = controller.Team() as ViewResult;
 
             // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void Contact()
+        public void Why()
         {
             // Arrange
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Contact() as ViewResult;
+            ViewResult result = controller.Why() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
