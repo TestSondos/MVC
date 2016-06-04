@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - medrecs.me</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -28,22 +28,30 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="@Url.Action("Index", "Home")">
-                    <img src="~/Images/Logo/64.png" class="navbar-brand" /> <span class="navbar-brand">medrecs.me</span>
+                    <span class="navbar-brand">medrecs.me</span>
                 </a>
 
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Team", "Team", "Home")</li>*@
-                </ul>
                 @Html.Partial("_LoginPartial")
+                @if (Request.IsAuthenticated == false)
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Why", "Why", "Home")</li>
+                        @if (Request.Browser.IsMobileDevice == false)
+                        {
+                            <li>@Html.ActionLink("Download Mobile App", "Download", "Home")</li>
+                        }
+                        @*<li>@Html.ActionLink("Team", "Team", "Home")</li>*@
+                    </ul>
+                }
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <footer>
+            <hr />
             <p>&copy; @DateTime.Now.Year - medrecs.me @Html.ActionLink(" team", "Team", "Home")</p>
         </footer>
     </div>

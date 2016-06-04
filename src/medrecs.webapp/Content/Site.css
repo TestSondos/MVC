@@ -123,3 +123,9 @@ a:hover{
 i.red{
     color:#BC0213;
 }
+
+footer {
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+}

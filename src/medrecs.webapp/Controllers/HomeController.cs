@@ -20,17 +20,15 @@ namespace medrecs.webapp.Controllers
             return View();
         }
 
-        public ActionResult About()
+        [Route("why")]
+        public ActionResult Why()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        [Route("Download")]
+        public ActionResult Download()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }
